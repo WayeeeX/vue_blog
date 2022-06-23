@@ -71,10 +71,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 body {
   background-color: rgb(245, 245, 245);
 }
+
 .loginBox {
   position: absolute;
   width: 350px;
@@ -96,8 +97,8 @@ h1 {
   width: 300px;
 }
 .el-button {
-  margin-left: 20px;
-  margin-bottom: 10px;
+  margin-left: 20px !important;
+  margin-bottom: 10px !important;
   width: 140px;
 }
 </style>

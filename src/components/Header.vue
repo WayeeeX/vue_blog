@@ -31,16 +31,16 @@
                   ></a
                 >
                 <a href="#"
-                  ><el-dropdown-item  v-show="!hasLogin"
+                  ><el-dropdown-item v-show="!hasLogin"
                     >注册</el-dropdown-item
                   ></a
                 >
-                 <a href="/write"
+                <a href="/write"
                   ><el-dropdown-item divided v-show="hasLogin"
                     >写文章</el-dropdown-item
                   ></a
                 >
-                <a href="#"
+                <a href="#" @click="logout"
                   ><el-dropdown-item divided v-show="hasLogin"
                     >退出</el-dropdown-item
                   ></a
