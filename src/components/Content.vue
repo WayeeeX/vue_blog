@@ -5,10 +5,9 @@
         <div class="article">
           <el-timeline>
             <el-timeline-item
-              :timestamp="blog.created"
+              v-bind:timestamp="blog.created"
               placement="top"
               v-for="blog in blogs"
-              :key="blog"
             >
               <el-card>
                 <h4>
@@ -65,7 +64,9 @@
   </el-main>
 </template>
 <script>
+
 export default {
+
   data () {
     return {
       items: [

@@ -11,6 +11,7 @@ import store from "./store";
 import mavonEditor from "mavon-editor";
 import "mavon-editor/dist/css/index.css";
 import "./permission"
+import 'github-markdown-css'
 Vue.prototype.$axios = axios;
 Vue.use(ElementUI).use(mavonEditor);
 Vue.config.productionTip = false;
