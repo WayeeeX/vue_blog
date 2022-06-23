@@ -55,7 +55,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           // 提交逻辑
-          this.$axios.post('http://localhost:8081/login', this.loginForm).then((res) => {
+          this.$axios.post('http://106.52.174.244:8081/login', this.loginForm).then((res) => {
             const token = res.headers['authorization']
             _this.$store.commit('SET_TOKEN', token)
             _this.$store.commit('SET_USERINFO', res.data.data)

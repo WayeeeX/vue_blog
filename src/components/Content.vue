@@ -1,7 +1,7 @@
 <template>
   <el-main>
     <el-row :gutter="24">
-      <el-col :span="16" :offset="0">
+      <el-col :span="16" :offset="0" :xs="24">
         <div class="article">
           <el-timeline>
             <el-timeline-item
@@ -32,7 +32,7 @@
           </el-pagination></div
       ></el-col>
       <el-col :span="7" :offset="1">
-        <div class="aside">
+        <div class="aside hidden-xs-only">
           <el-card :body-style="{ padding: '0px' }" class="intro">
             <el-image
               style="width: 100px; height: 100px"
@@ -86,7 +86,7 @@ export default {
   methods: {
     page (currentPage) {
       const _this = this
-      this.$axios.get('http://localhost:8081/blogs?currentPage=' + currentPage).then((res) => {
+      this.$axios.get('http://106.52.174.244:8081/blogs?currentPage=' + currentPage).then((res) => {
         console.log(res.data.data.records)
         _this.blogs = res.data.data.records
         _this.currentPage = res.data.data.current
@@ -101,10 +101,10 @@ export default {
 }
 </script>
 <style scoped>
-.el-main {
+/* .el-main {
   width: 1100px;
   margin: 20px auto;
-}
+} */
 .el-card {
   padding-top: 10px;
 }
