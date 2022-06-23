@@ -25,9 +25,26 @@
                 <a href="#"><el-dropdown-item>分类</el-dropdown-item></a>
                 <a href="#"><el-dropdown-item>标签</el-dropdown-item></a>
                 <a href="#"><el-dropdown-item>归档</el-dropdown-item></a>
-                <a href="/login"><el-dropdown-item divided v-show="!hasLogin">登陆</el-dropdown-item></a>
-                <a href="#"><el-dropdown-item divided v-show="!hasLogin">注册</el-dropdown-item></a>
-                <a href="#"><el-dropdown-item v-show="hasLogin">退出</el-dropdown-item></a>
+                <a href="/login"
+                  ><el-dropdown-item divided v-show="!hasLogin"
+                    >登陆</el-dropdown-item
+                  ></a
+                >
+                <a href="#"
+                  ><el-dropdown-item  v-show="!hasLogin"
+                    >注册</el-dropdown-item
+                  ></a
+                >
+                 <a href="/write"
+                  ><el-dropdown-item divided v-show="hasLogin"
+                    >写文章</el-dropdown-item
+                  ></a
+                >
+                <a href="#"
+                  ><el-dropdown-item divided v-show="hasLogin"
+                    >退出</el-dropdown-item
+                  ></a
+                >
               </el-dropdown-menu>
             </el-dropdown>
           </el-menu-item>
@@ -36,10 +53,9 @@
           <el-menu-item index="3" class="hidden-xs-only">标签</el-menu-item>
           <el-menu-item index="4" class="hidden-xs-only">归档</el-menu-item>
 
-            <el-menu-item index="/write" v-show="hasLogin"
-              >&nbsp;&nbsp;&nbsp;<i class="el-icon-edit"></i
-              >写文章</el-menu-item
-            >
+          <el-menu-item index="/write" v-show="hasLogin" class="hidden-xs-only"
+            >&nbsp;&nbsp;&nbsp;<i class="el-icon-edit"></i>写文章</el-menu-item
+          >
 
           <el-col :span="6" :offset="0" class="hidden-md-and-down">
             <el-menu-item
@@ -122,7 +138,7 @@ export default {
 h1 {
   height: 65px;
   font-size: 30px;
-    line-height: 65px;
+  line-height: 65px;
 }
 .el-input {
   width: 250px;
