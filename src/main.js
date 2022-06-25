@@ -13,9 +13,15 @@ import "mavon-editor/dist/css/index.css";
 import "./permission"
 import 'github-markdown-css'
 import 'element-ui/lib/theme-chalk/display.css';
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+
+
 Vue.prototype.$axios = axios;
 Vue.use(ElementUI).use(mavonEditor);
 Vue.config.productionTip = false;
+Vue.component('Header',Header)
+Vue.component('Footer',Footer)
 
 /* eslint-disable no-new */
 new Vue({

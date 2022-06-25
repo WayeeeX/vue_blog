@@ -15,5 +15,6 @@
         text-align: center;
         font-size: 40px;
         line-height: 55px;
+        z-index: 1;
     }
 </style>

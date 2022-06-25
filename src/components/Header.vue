@@ -22,9 +22,11 @@
               </span>
               <el-dropdown-menu slot="dropdown">
                 <a href="/"><el-dropdown-item>首页</el-dropdown-item></a>
-                <a href="#"><el-dropdown-item>分类</el-dropdown-item></a>
-                <a href="#"><el-dropdown-item>标签</el-dropdown-item></a>
-                <a href="#"><el-dropdown-item>归档</el-dropdown-item></a>
+                <a href="/category"
+                  ><el-dropdown-item>分类</el-dropdown-item></a
+                >
+                <a href="/tag"><el-dropdown-item>标签</el-dropdown-item></a>
+                <a href="/archives"><el-dropdown-item>归档</el-dropdown-item></a>
                 <a href="/login"
                   ><el-dropdown-item divided v-show="!hasLogin"
                     >登陆</el-dropdown-item
@@ -49,9 +51,9 @@
             </el-dropdown>
           </el-menu-item>
           <el-menu-item index="/" class="hidden-xs-only">首页</el-menu-item>
-          <el-menu-item index="2" class="hidden-xs-only">分类</el-menu-item>
-          <el-menu-item index="3" class="hidden-xs-only">标签</el-menu-item>
-          <el-menu-item index="4" class="hidden-xs-only">归档</el-menu-item>
+          <el-menu-item index="/category" class="hidden-xs-only">分类</el-menu-item>
+          <el-menu-item index="/tag" class="hidden-xs-only">标签</el-menu-item>
+          <el-menu-item index="/archives" class="hidden-xs-only">归档</el-menu-item>
 
           <el-menu-item index="/write" v-show="hasLogin" class="hidden-xs-only"
             >&nbsp;&nbsp;&nbsp;<i class="el-icon-edit"></i>写文章</el-menu-item
