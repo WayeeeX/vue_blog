@@ -15,7 +15,7 @@
           active-text-color="#ffd04b"
           :router="true"
         >
-          <el-menu-item>
+          <el-menu-item class="hidden-sm-and-up">
             <el-dropdown class="hidden-sm-and-up" trigger="click">
               <span class="el-dropdown-link">
                 菜单<i class="el-icon-arrow-down el-icon--right"></i>
@@ -26,17 +26,19 @@
                   ><el-dropdown-item>分类</el-dropdown-item></a
                 >
                 <a href="/tag"><el-dropdown-item>标签</el-dropdown-item></a>
-                <a href="/archives"><el-dropdown-item>归档</el-dropdown-item></a>
+                <a href="/archives"
+                  ><el-dropdown-item>归档</el-dropdown-item></a
+                >
                 <a href="/login"
                   ><el-dropdown-item divided v-show="!hasLogin"
                     >登陆</el-dropdown-item
                   ></a
                 >
-                <a href="#"
+                <!-- <a href="#"
                   ><el-dropdown-item v-show="!hasLogin"
                     >注册</el-dropdown-item
                   ></a
-                >
+                > -->
                 <a href="/write"
                   ><el-dropdown-item divided v-show="hasLogin"
                     >写文章</el-dropdown-item
@@ -51,9 +53,13 @@
             </el-dropdown>
           </el-menu-item>
           <el-menu-item index="/" class="hidden-xs-only">首页</el-menu-item>
-          <el-menu-item index="/category" class="hidden-xs-only">分类</el-menu-item>
+          <el-menu-item index="/category" class="hidden-xs-only"
+            >分类</el-menu-item
+          >
           <el-menu-item index="/tag" class="hidden-xs-only">标签</el-menu-item>
-          <el-menu-item index="/archives" class="hidden-xs-only">归档</el-menu-item>
+          <el-menu-item index="/archives" class="hidden-xs-only"
+            >归档</el-menu-item
+          >
 
           <el-menu-item index="/write" v-show="hasLogin" class="hidden-xs-only"
             >&nbsp;&nbsp;&nbsp;<i class="el-icon-edit"></i>写文章</el-menu-item
@@ -83,12 +89,12 @@
               >&nbsp;&nbsp;&nbsp;注册
             </el-menu-item>
           </el-col> -->
-          <el-menu-item
+          <!-- <el-menu-item
             index="/register"
             v-show="!hasLogin"
             class="hidden-xs-only"
             >&nbsp;&nbsp;&nbsp;注册
-          </el-menu-item>
+          </el-menu-item> -->
         </el-menu>
       </el-col>
     </el-row>

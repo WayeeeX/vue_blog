@@ -234,7 +234,7 @@ export default {
 }
 .main {
   /* background-color: #fff; */
-  margin: 50px 230px;
+  /* margin: 50px 230px; */
   /* padding: 30px; */
 }
 .title,
