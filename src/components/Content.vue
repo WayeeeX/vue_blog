@@ -45,7 +45,7 @@
             layout="prev, pager, next"
             :current-page="currentPage"
             :page-size="pageSize"
-            @current-change="page"
+            @current-change="pageChange"
             :total="total"
           >
           </el-pagination></div
@@ -118,6 +118,9 @@ export default {
       this.$axios.get('http://106.52.174.244:8889/tags/hot').then((res) => {
         this.items = res.data.data
       })
+    },
+    pageChange(page){
+        this.currentPage = page
     },
     blogDetail (id) {
       this.$router.push({ name: 'BlogDetail', params: { blogId: id } })

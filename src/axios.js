@@ -4,7 +4,7 @@ import store from "./store";
 import router from "./router";
 // axios.defaults.baseURL='http://106.52.174.244:8081'
 axios.interceptors.request.use(config => {
-  if (store.state.token) {
+  if (localStorage.token) {
     config.headers["Oauth-Token"] = localStorage.token;
   } // 可以统一设置请求头
   return config;

@@ -6,10 +6,8 @@
       </el-col>
       <el-col :span="20" :xs="10">
         <el-menu
-          :default-active="activeIndex2"
           class="el-menu-demo"
           mode="horizontal"
-          @select="handleSelect"
           background-color="#545c64"
           text-color="#fff"
           active-text-color="#ffd04b"
@@ -105,15 +103,17 @@ export default {
   data () {
     return {
       user: {
-        account: ''
+
       },
       hasLogin: false
     }
   },
   created () {
-    if (this.$store.getters.getUser.account) {
-      this.user.account = this.$store.getters.getUser.account
+    if (localStorage.token) {
+      this.user = sessionStorage.userInfo
       this.hasLogin = true
+    } else {
+      this.hasLogin = false
     }
   },
   methods: {
@@ -121,7 +121,11 @@ export default {
       const _this = this
       this.$axios.get('http://106.52.174.244:8889/logout').then((res) => {
         _this.$store.commit('REMOVE_INFO')
-        _this.$router.push('/login')
+        this.$router.push('/')
+        this.$message({
+          message: '退出成功',
+          type: 'success'
+        })
       });
     }
   }

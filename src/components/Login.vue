@@ -55,11 +55,11 @@ export default {
           this.$axios.post('http://106.52.174.244:8889/login', this.loginForm).then((res) => {
             const token = res.data.data['Oauth-Token']
             _this.$store.commit('SET_TOKEN', token)
-            console.log(_this.$store.state.token)
+
             this.$axios.get('http://106.52.174.244:8889/users/currentUser').then((res) => {
               const userInfo = res.data.data
               _this.$store.commit('SET_USERINFO', userInfo)
-              console.log(_this.$store.state.userInfo)
+
 
             })
             this.$message({
