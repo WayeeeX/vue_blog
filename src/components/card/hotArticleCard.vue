@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     getHotArticles () {
-      this.$axios.get('http://localhost:8889/articles/hot').then((res) => {
+      this.$axios.get('http://106.52.174.244:8889/articles/hot').then((res) => {
         this.articles = res.data.data
       })
     },

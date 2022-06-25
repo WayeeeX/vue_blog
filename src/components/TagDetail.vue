@@ -95,13 +95,13 @@ export default {
     getTag () {
       const id = this.$route.params.id
       this.page.tagId = id
-      this.$axios.get('http://localhost:8889/tags/detail/' + this.page.tagId).then((res) => {
+      this.$axios.get('http://106.52.174.244:8889/tags/detail/' + this.page.tagId).then((res) => {
         this.tag = res.data.data
         this.getBlogs()
       })
     },
     getBlogs () {
-      this.$axios.get('http://localhost:8889/articles', { params: this.page }).then((res) => {
+      this.$axios.get('http://106.52.174.244:8889/articles', { params: this.page }).then((res) => {
         this.blogs = res.data.data
       })
     },

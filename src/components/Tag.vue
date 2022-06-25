@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     getTag () {
-      this.$axios.get('http://localhost:8889/tags/detail').then((res) => {
+      this.$axios.get('http://106.52.174.244:8889/tags/detail').then((res) => {
         this.tag = res.data.data
         console.log(this.tag)
       })

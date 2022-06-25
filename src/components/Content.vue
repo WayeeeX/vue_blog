@@ -110,12 +110,12 @@ export default {
   methods: {
     page () {
       const _this = this
-      this.$axios.get('http://localhost:8889/articles').then((res) => {
+      this.$axios.get('http://106.52.174.244:8889/articles').then((res) => {
         console.log(res.data)
         this.blogs = res.data.data
         this.total = res.data.data.length
       })
-      this.$axios.get('http://localhost:8889/tags/hot').then((res) => {
+      this.$axios.get('http://106.52.174.244:8889/tags/hot').then((res) => {
         this.items = res.data.data
       })
     },

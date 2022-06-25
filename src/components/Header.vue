@@ -113,7 +113,7 @@ export default {
   methods: {
     logout () {
       const _this = this
-      this.$axios.get('http://localhost:8889/logout').then((res) => {
+      this.$axios.get('http://106.52.174.244:8889/logout').then((res) => {
         _this.$store.commit('REMOVE_INFO')
         _this.$router.push('/login')
       });

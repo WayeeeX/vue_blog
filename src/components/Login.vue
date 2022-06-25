@@ -4,10 +4,7 @@
       <h1>登陆页面</h1>
       <el-form :model="loginForm" ref="loginForm" :rules="rules">
         <el-form-item size="normal" prop="account">
-          <el-input
-            v-model="loginForm.account"
-            placeholder="用户名"
-          ></el-input>
+          <el-input v-model="loginForm.account" placeholder="用户名"></el-input>
         </el-form-item>
 
         <el-form-item size="normal" prop="password">
@@ -55,16 +52,16 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           // 提交逻辑
-          this.$axios.post('http://localhost:8889/login', this.loginForm).then((res) => {
+          this.$axios.post('http://106.52.174.244:8889/login', this.loginForm).then((res) => {
             const token = res.data.data['Oauth-Token']
             _this.$store.commit('SET_TOKEN', token)
-            this.$axios.get('http://localhost:8889/users/currentUser').then((res)=>{
-                const userInfo = res.data.data
-                _this.$store.commit('SET_USERINFO',userInfo)
+            this.$axios.get('http://106.52.174.244:8889/users/currentUser').then((res) => {
+              const userInfo = res.data.data
+              _this.$store.commit('SET_USERINFO', userInfo)
             })
             this.$message({
-                message: '登陆成功',
-                type: 'success'
+              message: '登陆成功',
+              type: 'success'
             })
             _this.$router.push("/")
           })

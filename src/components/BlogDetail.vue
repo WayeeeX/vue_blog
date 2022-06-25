@@ -167,7 +167,7 @@ export default {
 
       let blogId = this.$route.params.blogId
       this.blog.id = parseInt(blogId)
-      this.$axios.get('http://localhost:8889/articles/view/' + blogId).then((res) => {
+      this.$axios.get('http://106.52.174.244:8889/articles/view/' + blogId).then((res) => {
         const data = res.data.data
         this.blog.author = data.author
         this.blog.body.content = data.body.content
@@ -179,7 +179,7 @@ export default {
         this.blog.title = data.title
         this.blog.viewCounts = data.viewCounts
       }),
-        this.$axios.get('http://localhost:8889/comments/article/' + blogId).then((res) => {
+        this.$axios.get('http://106.52.174.244:8889/comments/article/' + blogId).then((res) => {
           this.comments = res.data.data
         })
     },
@@ -203,7 +203,7 @@ export default {
           content: this.textarea1,
         }
       }
-      this.$axios.post('http://localhost:8889/comments/create/change', this.commentForm).then((res) => {
+      this.$axios.post('http://106.52.174.244:8889/comments/create/change', this.commentForm).then((res) => {
         this.getBlog()
         this.textarea1 = ''
         this.$message({

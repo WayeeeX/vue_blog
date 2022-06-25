@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     getCategory () {
-      this.$axios.get('http://localhost:8889/categorys/detail').then((res) => {
+      this.$axios.get('http://106.52.174.244:8889/categorys/detail').then((res) => {
         this.category = res.data.data
         console.log(this.category)
       })
