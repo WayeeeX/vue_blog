@@ -72,7 +72,7 @@
           <p class="body">{{ comment.content }}</p>
           <!-- 评论按钮 -->
           <div style="margin-bottom: 10px">
-            <span class="reply"
+            <span class="reply" @click="reply1()"
               ><i class="el-icon-s-comment"></i>评论</span
             >
           </div>
@@ -92,7 +92,7 @@
               <!-- 下行 -->
               <div style="color: #a6a6a6; font-size: 12px">
                 <span>{{ uComment.createDate }}</span>
-                <span class="reply"><i class="el-icon-s-comment"></i>回复</span>
+                <span class="reply" @click="reply2()"><i class="el-icon-s-comment"></i>回复</span>
               </div>
             </div>
           </div>
@@ -103,7 +103,6 @@
 </template>
 <script>
 import 'github-markdown-css/github-markdown.css' // 然后添加样式markdown-body
-import Header from "@/components/Header";
 export default {
   name: "BlogDetail",
   data () {
@@ -148,6 +147,8 @@ export default {
         },
         toUser: ''
       },
+      showReply1: false,
+      showReply2: false,
     }
   },
   computed: {
@@ -212,6 +213,12 @@ export default {
         })
       })
 
+    },
+    reply1 () {
+      this.showReply1 = !this.showReply1
+    },
+    reply2 () {
+      this.showReply2 = !this.showReply2
     }
   },
   created () {
@@ -225,7 +232,11 @@ export default {
 .el-container {
   height: 100%;
 }
-
+.main {
+  /* background-color: #fff; */
+  margin: 50px 230px;
+  /* padding: 30px; */
+}
 .title,
 .info,
 .end {
