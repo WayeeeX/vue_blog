@@ -225,11 +225,7 @@ export default {
 .el-container {
   height: 100%;
 }
-.main {
-  /* background-color: #fff; */
-  margin: 50px 230px;
-  /* padding: 30px; */
-}
+
 .title,
 .info,
 .end {
