@@ -64,7 +64,7 @@
             <div>
               <span>{{ comment.author.nickname }}</span>
               <span style="font-size: 10px; color: rgb(164, 163, 164)">{{
-                1 + index + "楼 " + comment.createDate
+                comments.length - index + "楼 " + comment.createDate
               }}</span>
             </div>
           </div>
@@ -72,7 +72,7 @@
           <p class="body">{{ comment.content }}</p>
           <!-- 评论按钮 -->
           <div style="margin-bottom: 10px">
-            <span style="color: #a6a6a6"
+            <span class="reply"
               ><i class="el-icon-s-comment"></i>评论</span
             >
           </div>
@@ -92,7 +92,7 @@
               <!-- 下行 -->
               <div style="color: #a6a6a6; font-size: 12px">
                 <span>{{ uComment.createDate }}</span>
-                <span><i class="el-icon-s-comment"></i>回复</span>
+                <span class="reply"><i class="el-icon-s-comment"></i>回复</span>
               </div>
             </div>
           </div>
@@ -109,6 +109,8 @@ export default {
   data () {
     return {
       textarea1: '',
+      textarea2: '',
+      textarea3: '',
       blog: {
         id: null,
         author: {
@@ -144,7 +146,8 @@ export default {
         parent: {
           id: null
         },
-      }
+        toUser: ''
+      },
     }
   },
   computed: {
@@ -163,7 +166,7 @@ export default {
     getBlog () {
 
       let blogId = this.$route.params.blogId
-      this.blog.id = blogId
+      this.blog.id = parseInt(blogId)
       this.$axios.get('http://localhost:8889/articles/view/' + blogId).then((res) => {
         const data = res.data.data
         this.blog.author = data.author
@@ -178,24 +181,37 @@ export default {
       }),
         this.$axios.get('http://localhost:8889/comments/article/' + blogId).then((res) => {
           this.comments = res.data.data
-          console.log(this.comments[0].author.nickname)
         })
     },
     addComment (thisId) {
-      this.commentForm = {
-        article: {
-          id: this.blog.id
-        },
-        content: this.textarea1,
-        parent: {
-          id: thisId
-        },
+      if (thisId) {
+        this.commentForm = {
+          article: {
+            id: this.blog.id
+          },
+          content: this.textarea1,
+          parent: {
+            id: thisId
+          },
+          toUser: ''
+        }
+      } else {
+        this.commentForm = {
+          article: {
+            id: this.blog.id
+          },
+          content: this.textarea1,
+        }
       }
-      this.$axios.post('http://localhost:8889/comments/create/change',this.commentForm).then((res)=>{
-        data = res.data.data
-        console.log(res)
-        
+      this.$axios.post('http://localhost:8889/comments/create/change', this.commentForm).then((res) => {
+        this.getBlog()
+        this.textarea1 = ''
+        this.$message({
+          message: '评论成功',
+          type: 'success'
+        })
       })
+
     }
   },
   created () {
@@ -271,5 +287,16 @@ export default {
 .uComments {
   border-left: 4px solid #c5cac3;
   padding-left: 16px;
+}
+.reply {
+  cursor: pointer;
+  color: #a6a6a6;
+}
+.reply:hover {
+  color: rgb(120, 182, 247);
+}
+.reply1 {
+  padding-left: 16px;
+  border-left: 4px solid #c5cac3;
 }
 </style>

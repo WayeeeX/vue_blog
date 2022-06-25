@@ -3,9 +3,9 @@
     <div class="loginBox">
       <h1>登陆页面</h1>
       <el-form :model="loginForm" ref="loginForm" :rules="rules">
-        <el-form-item size="normal" prop="username">
+        <el-form-item size="normal" prop="account">
           <el-input
-            v-model="loginForm.username"
+            v-model="loginForm.account"
             placeholder="用户名"
           ></el-input>
         </el-form-item>
@@ -33,11 +33,11 @@ export default {
   data () {
     return {
       loginForm: {
-        username: 'admin',
-        password: 'admin'
+        account: 'admin',
+        password: '123456'
       },
       rules: {
-        username: [
+        account: [
           { required: true, message: '请输入用户名', trigger: 'blur' },
         ],
         password: [
@@ -55,10 +55,17 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           // 提交逻辑
-          this.$axios.post('http://106.52.174.244:8081/login', this.loginForm).then((res) => {
-            const token = res.headers['authorization']
+          this.$axios.post('http://localhost:8889/login', this.loginForm).then((res) => {
+            const token = res.data.data['Oauth-Token']
             _this.$store.commit('SET_TOKEN', token)
-            _this.$store.commit('SET_USERINFO', res.data.data)
+            this.$axios.get('http://localhost:8889/users/currentUser').then((res)=>{
+                const userInfo = res.data.data
+                _this.$store.commit('SET_USERINFO',userInfo)
+            })
+            this.$message({
+                message: '登陆成功',
+                type: 'success'
+            })
             _this.$router.push("/")
           })
         } else {

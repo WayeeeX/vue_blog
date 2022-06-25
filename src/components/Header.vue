@@ -99,25 +99,21 @@ export default {
   data () {
     return {
       user: {
-        username: ''
+        account: ''
       },
       hasLogin: false
     }
   },
   created () {
-    if (this.$store.getters.getUser.username) {
-      this.user.username = this.$store.getters.getUser.username
+    if (this.$store.getters.getUser.account) {
+      this.user.account = this.$store.getters.getUser.account
       this.hasLogin = true
     }
   },
   methods: {
     logout () {
       const _this = this
-      this.$axios.get('http://106.52.174.244:8081/logout', {
-        headers: {
-          "Authorization": localStorage.getItem("token")
-        }
-      }).then((res) => {
+      this.$axios.get('http://localhost:8889/logout').then((res) => {
         _this.$store.commit('REMOVE_INFO')
         _this.$router.push('/login')
       });
