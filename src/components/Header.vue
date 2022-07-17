@@ -1,14 +1,14 @@
 <template>
   <el-header>
     <el-row>
-      <el-col :span="4" class="hidden-sm-and-down">
+      <el-col :span="4" class="hidden-sm-and-down title">
         <h1>Blog</h1>
       </el-col>
       <el-col :span="20" :xs="10">
         <el-menu
           class="el-menu-demo"
           mode="horizontal"
-          background-color="#545c64"
+          background-color="#409EFF"
           text-color="#fff"
           active-text-color="#ffd04b"
           :router="true"
@@ -32,11 +32,7 @@
                     >登陆</el-dropdown-item
                   ></a
                 >
-                <!-- <a href="#"
-                  ><el-dropdown-item v-show="!hasLogin"
-                    >注册</el-dropdown-item
-                  ></a
-                > -->
+
                 <a href="/write"
                   ><el-dropdown-item divided v-show="hasLogin"
                     >写文章</el-dropdown-item
@@ -65,34 +61,20 @@
 
           <el-col :span="6" :offset="0" class="hidden-md-and-down">
             <el-menu-item
-              ><el-input placeholder="搜索" size="normal" clearable></el-input>
+              ><el-input
+                placeholder="搜索"
+                size="normal"
+                clearable
+                disabled
+              ></el-input>
             </el-menu-item>
           </el-col>
-          <!-- <el-col :span="2" :offset="0">
-            <el-menu-item index="/login" v-show="!hasLogin"
-              >&nbsp;&nbsp;&nbsp;登陆
-            </el-menu-item>
-            <el-menu-item v-show="hasLogin" @click="logout"
-              >&nbsp;&nbsp;&nbsp;退出
-            </el-menu-item>
-          </el-col> -->
           <el-menu-item index="/login" v-show="!hasLogin" class="hidden-xs-only"
             >&nbsp;&nbsp;&nbsp;登陆
           </el-menu-item>
           <el-menu-item v-show="hasLogin" @click="logout" class="hidden-xs-only"
             >&nbsp;&nbsp;&nbsp;退出
           </el-menu-item>
-          <!-- <el-col :span="2" :offset="0">
-            <el-menu-item index="/register" v-show="!hasLogin"
-              >&nbsp;&nbsp;&nbsp;注册
-            </el-menu-item>
-          </el-col> -->
-          <!-- <el-menu-item
-            index="/register"
-            v-show="!hasLogin"
-            class="hidden-xs-only"
-            >&nbsp;&nbsp;&nbsp;注册
-          </el-menu-item> -->
         </el-menu>
       </el-col>
     </el-row>
@@ -100,36 +82,34 @@
 </template>
 <script>
 export default {
-  data () {
+  data() {
     return {
-      user: {
-
-      },
+      user: {},
       hasLogin: false
-    }
+    };
   },
-  created () {
+  created() {
     if (localStorage.token) {
-      this.user = sessionStorage.userInfo
-      this.hasLogin = true
+      this.user = sessionStorage.userInfo;
+      this.hasLogin = true;
     } else {
-      this.hasLogin = false
+      this.hasLogin = false;
     }
   },
   methods: {
-    logout () {
-      const _this = this
-      this.$axios.get('http://106.52.174.244:8889/logout').then((res) => {
-        _this.$store.commit('REMOVE_INFO')
-        this.$router.push('/')
+    logout() {
+      const _this = this;
+      this.$axios.get("http://106.52.174.244:8889/logout").then(res => {
+        _this.$store.commit("REMOVE_INFO");
+        location.reload();
         this.$message({
-          message: '退出成功',
-          type: 'success'
-        })
+          message: "退出成功",
+          type: "success"
+        });
       });
     }
   }
-}
+};
 </script>
 <style scoped>
 .el-dropdown-link {
@@ -140,13 +120,16 @@ export default {
 .el-header {
   width: 100%;
   height: 75px;
-  background-color: #545c64;
-  border-bottom: 1px solid black;
+  background-color: #409eff;
+  border-bottom: 1px solid #409eff;
 }
-h1 {
-  height: 65px;
-  font-size: 30px;
-  line-height: 65px;
+h1:hover {
+}
+
+.el-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .el-input {
   width: 250px;
